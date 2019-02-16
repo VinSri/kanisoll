@@ -5,6 +5,7 @@ class Author
 
   field :author_id, type: String
   field :author_id_lower_case, type: String
+  field :email_address, type: String
   field :given_name, type: String
   field :last_name, type: String
   field :description, type: String
@@ -12,4 +13,6 @@ class Author
   field :recognition, type: Array
 
   validates :author_id, :given_name, :last_name, presence: true
+  validates :author_id, uniqueness: { case_sensitive: true}
+  validates :email_address, allow_blank: true, uniqueness: true
 end

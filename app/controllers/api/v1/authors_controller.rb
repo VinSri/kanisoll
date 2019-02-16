@@ -9,12 +9,14 @@ class Api::V1::AuthorsController < ApplicationController
     @author = Author.new(author_params)
     if @author.save
       render json: @author, status: :created, location: api_v1_author_url(@author)
+    else
+      render json: @author.errors, status: :invalid_creation
     end
   end
 
   private
   
   def author_params
-    params.require(:author).permit(:author_id, :author_given_name, :author_last_name)
+    params.permit(:author_id, :given_name, :last_name)
   end
 end
