@@ -11,6 +11,7 @@ class Author
   field :description, type: String
   field :birth_country, type: String
   field :recognition, type: Array
+  field :useful_links, type: Array
 
   validates :author_id, :given_name, :last_name, presence: true
   validates :author_id, uniqueness: { case_sensitive: true}
